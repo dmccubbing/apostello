@@ -105,7 +105,7 @@ def log_msg_in(p, t, from_pk):
     from apostello.models import Keyword, SmsInbound, Recipient
     from_ = Recipient.objects.get(pk=from_pk)
     matched_keyword = Keyword.match(p['Body'].strip())
-    SmsInbound.objects.create(
+    sms = SmsInbound.objects.create(
         sid=p['MessageSid'],
         content=p['Body'],
         time_received=t,
@@ -115,6 +115,7 @@ def log_msg_in(p, t, from_pk):
         matched_link=Keyword.get_log_link(matched_keyword),
         matched_colour=Keyword.lookup_colour(p['Body'].strip())
     )
+    sms.send_notification()
     # check log is consistent:
     async('apostello.tasks.check_incoming_log')
 

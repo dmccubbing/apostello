@@ -2,6 +2,7 @@ import $ from 'jquery';
 import { csrfSafeMethod, getCookie, sameOrigin } from './django_cookies';
 import { setupSendAdhoc, setupSendGroup } from './send_costs';
 import { renderTable } from './render_table';
+import { renderNotifications } from './render_notifications';
 import { renderElvantoButtons } from './elvanto';
 import { renderToggleButton } from './item_remove_button';
 import { renderAdminUserForm, renderTestEmailForm, renderTestSmsForm } from './first_run';
@@ -54,6 +55,8 @@ function appInit() {
   if ($('#react_table').length > 0) {
     renderTable();
   }
+  // render notifications
+  renderNotifications();
   // render elvanto buttons
   if ($('#elvanto_pull_button').length > 0) {
     renderElvantoButtons();

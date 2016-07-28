@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'graphs',
     'site_config',
     # third party apps
+    'channels',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_docs',
@@ -201,3 +202,14 @@ OPBEAT_JS_ORG_ID = os.environ.get('OPBEAT_JS_ORG_ID')
 
 # solo caching:
 SOLO_CACHE = 'default'
+
+# channels
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "ROUTING": "apostello.routing.channel_routing",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379'), ],
+        },
+    },
+}

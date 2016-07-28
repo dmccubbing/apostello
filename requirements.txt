@@ -1,4 +1,6 @@
 apostello-form==0.0.1
+asgi-redis==0.14.0
+channels==0.17.1
 dj-database-url==0.4.1
 django-allauth==0.25.2
 django-debug-toolbar==1.5

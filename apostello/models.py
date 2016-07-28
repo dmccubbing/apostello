@@ -1,7 +1,9 @@
 import hashlib
+import json
 import logging
 from math import ceil
 
+from channels import Group
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.cache import cache
@@ -621,6 +623,15 @@ class SmsInbound(models.Model):
         cache.set('live_wall_all', None, 0)
         # invalidate per person last sms cache
         cache.set('last_msg__{0}'.format(self.sender_num), None, 0)
+
+    def send_notification(self):
+        """Sends a notification on SMS arrival"""
+        notification = {
+            'sender_name': self.sender_name,
+            'content': self.content,
+            'time_received': str(self.time_received),
+        }
+        Group('sms_notification').send({'text': json.dumps(notification)})
 
     class Meta:
         ordering = ['-time_received']
