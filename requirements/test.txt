@@ -11,5 +11,5 @@ pytest-xdist==1.15
 pytest==3.0.5
 scandir==1.4
 selenium==3.0.2
-tox==2.4.1
+tox==2.5.0
 vcrpy==1.10.3
