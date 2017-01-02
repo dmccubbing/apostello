@@ -4,7 +4,7 @@ django-allauth==0.29.0
 django-extensions==1.7.5
 django-phonenumber-field==1.1.0
 django-q==0.7.18
-django-redis==4.6.0
+django-redis==4.7.0
 django-solo==1.1.2
 django-twilio==0.8.0
 django==1.10.4
