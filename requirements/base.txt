@@ -19,4 +19,4 @@ python-dotenv==0.6.1
 redis==2.10.5
 requests==2.12.3
 twilio==5.6.0
-whitenoise==3.2.2
+whitenoise==3.2.3
